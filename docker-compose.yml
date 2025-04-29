@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  postgres:
+    build: .
+    container_name: energia_postgres
+    environment:
+      POSTGRES_DB: bd_energia
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: bdprueba123
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./postgresql.conf:/etc/postgresql/postgresql.conf
+      - ./pg_hba.conf:/etc/postgresql/pg_hba.conf
+    command: postgres -c config_file=/etc/postgresql/postgresql.conf
