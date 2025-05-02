@@ -76,3 +76,10 @@ La imagen ```bd_energia_diagramER.png``` proporciona una representación visual 
 
 ### Futuras Mejoras
 En una segunda entrega, se incluirá la migración de datos de las APIs externas, así como consultas de ejemplo que contengan 5 consultas que traten de solucionar la pregunta planteada (*4. ¿Cómo se interrelacionan Demanda_Energética, Capacidad_Instalada, Índice_Servicio y Tiempo_Respuesta_Demanda para implementar mejoras que garanticen un servicio eficiente y disminuyan en un 20% los tiempos de respuesta en 9 meses?*) para interactuar con la base de datos.
+
+
+
+### **Grupo No. 5**
+- **Rosa Carolina Sanchez Montes**
+ - **Daniela Tipan Segura**
+ - **Juan Pablo Guzmán Martínez**
