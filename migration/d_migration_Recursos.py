@@ -3,7 +3,7 @@ import psycopg2
 from datetime import datetime
 
 # Parámetros de la solicitud
-url = "https://servapibi.xm.com.co/Lists"  # Reemplaza esto con la URL real del API
+url = "https://servapibi.xm.com.co/Lists"
 payload = {
     "MetricId": "ListadoRecursos"
 }
@@ -28,7 +28,8 @@ if response.status_code == 200:
     cursor = conn.cursor()
 
     # Lista de recursos que deben ser insertados siempre
-    recursos_faltantes = ['JPR1', '2YQO', '3C6Y', '3C71', 'JBV1', '3E98', '3BFJ', '3EEG', '3FDA', '3GPV', 'JAG1', 'RUB1', '3KOD', '3PKN', '3PKH', '3RKN', '3RKP', '4SNT']
+    recursos_faltantes = ['JPR1', '2YQO', '3C6Y', '3C71', 'JBV1', '3E98', '3BFJ', '3EEG',
+                          '3FDA', '3GPV', 'JAG1', 'RUB1', '3KOD', '3PKN', '3PKH', '3RKN', '3RKP', '4SNT']
 
     # Procesar los recursos de la API
     for item in data.get("Items", []):
@@ -46,11 +47,13 @@ if response.status_code == 200:
             estado = values.get("State")
 
             try:
-                fecha_operacion = datetime.strptime(fecha_operacion_str, "%Y-%m-%d").date()
+                fecha_operacion = datetime.strptime(
+                    fecha_operacion_str, "%Y-%m-%d").date()
             except:
                 fecha_operacion = None
 
-            cursor.execute("SELECT id_recurso FROM Recurso WHERE codigo = %s", (codigo,))
+            cursor.execute(
+                "SELECT id_recurso FROM Recurso WHERE codigo = %s", (codigo,))
             if cursor.fetchone() is None:
                 cursor.execute("""
                     INSERT INTO Recurso (codigo, nombre, tipo, tipo_despacho, tipo_recurso, 

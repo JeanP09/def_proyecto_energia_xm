@@ -88,7 +88,7 @@ def crear_payload(metric_id, start_date, end_date):
 def procesar_metrica(row):
     metric_id = row['MetricId']
     if metric_id != 'CapEfecNeta':
-        return  # Ignorar otras métricas
+        return
     url = row['Url']
 
     fecha_actual = fecha_ini

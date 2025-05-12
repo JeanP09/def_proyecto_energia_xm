@@ -36,7 +36,7 @@ def get_id(tabla, valor):
     campo = 'codigo'
     if tabla.lower() == 'metrica':
         campo = 'metric_id'
-    tabla = tabla.lower()  # Asegura que use minúsculas
+    tabla = tabla.lower() 
     query = f"SELECT id_{tabla} FROM {tabla} WHERE {campo} = %s"
     cursor.execute(query, (valor,))
     res = cursor.fetchone()
@@ -77,7 +77,7 @@ def crear_payload(metric_id, start_date, end_date):
 def procesar_metrica(row):
     metric_id = row['MetricId']
     if metric_id not in ['DemaReal', 'DemaCome', 'Gene']:
-        return  # Ignorar otras métricas
+        return
 
     url = row['Url']
     fecha_actual = fecha_ini

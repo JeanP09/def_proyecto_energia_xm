@@ -42,7 +42,7 @@ def get_id(tabla, valor):
 
 # Insertar en Demanda_Diaria
 def insert_demasin(fecha, valor):
-    id_sistema = get_id("Sistema", "SIN")  # Mapear "Sistema" → "SIN"
+    id_sistema = get_id("Sistema", "SIN")
     id_metrica = get_id("Metrica", "DemaSIN")
     if id_sistema and id_metrica:
         cursor.execute("""
@@ -78,7 +78,7 @@ def procesar_demasin():
             for item in data.get("Items", []):
                 fecha = item["Date"]
                 for registro in item.get("DailyEntities", []):
-                    if registro["Id"] == "Sistema":  # Validar que sea correcto
+                    if registro["Id"] == "Sistema":
                         valor = float(registro["Value"])
                         insert_demasin(fecha, valor)
                         print(f"✅ Insertado: {fecha} → {valor}")
