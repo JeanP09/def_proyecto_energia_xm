@@ -97,7 +97,7 @@ cd def_proyecto_energia_xm
 ```
 
 
-### Paso 3: Iniciar ls servicios definidos
+### Paso 3: Iniciar los servicios definidos
 
 Dentro de la carpeta del proyecto, dirígete al archivo ```run_migrations.py```, esto hará que:
 1. Se **iniciará** los servicios ya definidos en el archivo `docker-compose.yml` como segundo plano, con su comando:
