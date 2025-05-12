@@ -1,54 +1,22 @@
-version: '3.8'
-
 services:
-  postgres-master:
-    build: ./master
-    container_name: energia_postgres_master
+  db:
+    image: postgres:latest
+    container_name: energia_xm_db
     environment:
-      POSTGRES_DB: bd_energia
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: bdprueba123
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: dbprueba123
+      POSTGRES_DB: energia_xm
     ports:
       - "5432:5432"
     volumes:
-      - ./master/init.sql:/docker-entrypoint-initdb.d/init.sql
-      - ./master/postgresql.conf:/etc/postgresql/postgresql.conf
-      - ./master/pg_hba.conf:/etc/postgresql/pg_hba.conf
-      - master_data:/var/lib/postgresql/data
-    command: postgres -c config_file=/etc/postgresql/postgresql.conf
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
-      - postgres-net
-
-  postgres-slave:
-    build: ./slave
-    container_name: energia_postgres_slave
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: bdprueba123
-    depends_on:
-      - postgres-master
-    ports:
-      - "5433:5432"
-    volumes:
-      - slave_data:/var/lib/postgresql/data
-    entrypoint:
-      - bash
-      - -c
-      - |
-        rm -rf /var/lib/postgresql/data/*
-        until pg_basebackup -h postgres-master -D /var/lib/postgresql/data -U postgres -Fp -Xs -P -R
-        do
-          echo "Esperando que el maestro esté listo..."
-          sleep 2
-        done
-        echo "primary_conninfo = 'host=postgres-master port=5432 user=postgres password=bdprueba123'" >> /var/lib/postgresql/data/postgresql.auto.conf
-        exec postgres -c config_file=/etc/postgresql/postgresql.conf
-    networks:
-      - postgres-net
+      - energia_xm_red
 
 volumes:
-  master_data:
-  slave_data:
+  postgres_data:
 
 networks:
-  postgres-net:
+  energia_xm_red:
+    driver: bridge
