@@ -8,7 +8,7 @@ El proyecto está hecho por los siguientes archivos:
 
 ```bash
 def_proyecto_energia_xm/
-  ├── energia_xm_diagramER.png
+  ├── diagrama_energia_xm.png
   ├── migration/ 
   │   └── d_migration_Recursos.py
   │   └── d_migration_DemaSIN.py
@@ -26,7 +26,7 @@ def_proyecto_energia_xm/
   ├── test_conn.py.py
   ├── total_execution.py
 ```
-- **energia_xm_diagramER.png**: Imagen que representa el modelo relacional de la base de datos ```energia_xm```.
+- **diagrama_energia_xm.png**: Imagen que representa el modelo relacional de la base de datos ```energia_xm```.
 - **/migration**:  Tenemos la carpeta de migración la cual conlleva 5 archivos, 4 de ellos archivos python que tienen los script de migración ```d_migration....py``` y 1 de ellos el cual representa las métricas que fueron utilizadas para dicho proyecto ```metricas.xlsx```.
 - **docker-compose.yml**: Este archivo es la contrucción para la creación y la configuración del contenedor en PostgreSQL.
 - **Dockerfile**: Este archivo es usado para personalizar la imagen de PostgreSQL.
