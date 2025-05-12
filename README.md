@@ -1,6 +1,23 @@
 # Proyecto de Base de Datos Energética
 
 Este proyecto tiene como objetivo diseñar e implementar una base de datos relacional para gestionar métricas energéticas de un sistema de monitoreo. La base de datos se implementa utilizando PostgreSQL dentro del contenedor Docker.
+Este documento ofrece una introducción completa al Sistema de Base de Datos Energia XM, un proyecto diseñado para gestionar y analizar métricas energéticas mediante PostgreSQL en contenedores Docker. El sistema permite el seguimiento y análisis eficaz de la demanda, la generación y la capacidad energética en diferentes sistemas y recursos energéticos.
+
+## Descripción general del sistema
+El sistema Energia XM consta de varios componentes integrados que trabajan juntos para crear, completar y mantener una base de datos PostgreSQL para métricas de energía.
+
+![alt text](diagrams\diagram_1.png)
+
+## Arquitectura de base de datos
+La base de datos está diseñada con un esquema normalizado optimizado para datos de energía de series temporales, utilizando particiones de tablas para mejorar el rendimiento.
+
+![alt text](diagrams\diagram_2.png)
+
+## Flujo de Ejecución
+El sistema sigue un flujo de ejecución definido para configurar y completar la base de datos:
+
+![alt text](diagrams\diagram_3.png)
+
 
 ## Estructura del Proyecto
 
@@ -8,7 +25,12 @@ El proyecto está hecho por los siguientes archivos:
 
 ```bash
 def_proyecto_energia_xm/
-  ├── diagrama_energia_xm.png
+  ├── backup_postgres/...
+  ├── diagrams/ 
+  │   └── diagram_1.png
+  │   └── diagram_2.png
+  │   └── diagram_3.png
+  │   └── diagrama_energia_xm.png
   ├── migration/ 
   │   └── d_migration_Recursos.py
   │   └── d_migration_DemaSIN.py
@@ -26,7 +48,8 @@ def_proyecto_energia_xm/
   ├── test_conn.py.py
   ├── total_execution.py
 ```
-- **diagrama_energia_xm.png**: Imagen que representa el modelo relacional de la base de datos ```energia_xm```.
+- **/backup_potgres**:  Esta carpeta posee todo el backup del volúmen de datos migrados a la base de datos como una forma opcional de reingresar los datos a la base de datos del contenedor sin necesidad de ejecutar ```run_migrations.py```.
+- **/diagrams**:  Dicha carpeta contiene todas las imágenes de los diagramas del proyecto como especificación de su ejecución y funcionamiento.
 - **/migration**:  Tenemos la carpeta de migración la cual conlleva 5 archivos, 4 de ellos archivos python que tienen los script de migración ```d_migration....py``` y 1 de ellos el cual representa las métricas que fueron utilizadas para dicho proyecto ```metricas.xlsx```.
 - **docker-compose.yml**: Este archivo es la contrucción para la creación y la configuración del contenedor en PostgreSQL.
 - **Dockerfile**: Este archivo es usado para personalizar la imagen de PostgreSQL.
@@ -341,9 +364,10 @@ docker volume rm <nombre_del_volumen>
 ```
 
 
+<br>
 
 ## **Integrantes grupo No. 5**
-- **Rosa Carolina Sanchez Montes**
+ - **Rosa Carolina Sanchez Montes**
  - **Daniela Tipan Segura**
  - **Juan Pablo Guzmán Martínez**
  
