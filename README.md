@@ -6,17 +6,17 @@ Este documento ofrece una introducción completa al Sistema de Base de Datos Ene
 ## Descripción general del sistema
 El sistema Energia XM consta de varios componentes integrados que trabajan juntos para crear, completar y mantener una base de datos PostgreSQL para métricas de energía.
 
-![alt text](diagrams\diagram_1.png)
+![alt text](diagrams/diagram_1.png)
 
 ## Arquitectura de base de datos
 La base de datos está diseñada con un esquema normalizado optimizado para datos de energía de series temporales, utilizando particiones de tablas para mejorar el rendimiento.
 
-![alt text](diagrams\diagram_2.png)
+![alt text](diagrams/diagram_2.png)
 
 ## Flujo de Ejecución
 El sistema sigue un flujo de ejecución definido para configurar y completar la base de datos:
 
-![alt text](diagrams\diagram_3.png)
+![alt text](diagrams/diagram_3.png)
 
 
 ## Estructura del Proyecto
